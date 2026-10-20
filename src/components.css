@@ -65,6 +65,13 @@ mark.hl {
    KABUK: sekmeler, gezinti yığını, sayfalar
    ===================================================================== */
 #app { position: fixed; inset: 0; overflow: hidden; background: var(--bg); transition: transform var(--dur-4) var(--ease-ios), border-radius var(--dur-4) var(--ease-ios); }
+/* Ana Ekran uygulaması: durum çubuğu şeffaf (black-translucent); içerik çentiğin altına uzanır */
+html.is-standalone body::after {
+  content: ""; position: fixed; top: 0; left: 0; right: 0; z-index: 70;
+  height: var(--safe-top);
+  background: var(--statusbar-scrim);
+  pointer-events: none;
+}
 html.has-sheet-large { background: #000; }
 html.has-sheet-large body { background: #000; }
 html.has-sheet-large #app { transform: translateY(calc(var(--safe-top) * 0.35)) scale(0.92); border-radius: 22px; }

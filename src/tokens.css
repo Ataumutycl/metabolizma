@@ -82,6 +82,8 @@
   --bar-bg: rgba(242, 242, 247, 0.80);   /* kaydırınca beliren gezinti çubuğu */
   --scrim: rgba(0, 0, 0, 0.22);
   --sheet-bg: #F2F2F7;
+  /* Ana Ekran uygulamasında beyaz durum çubuğu yazısının açık zeminde okunması için */
+  --statusbar-scrim: linear-gradient(to bottom, rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.12) 70%, rgba(0, 0, 0, 0));
   --sheet-card: #FFFFFF;
   --sheet-card-2: #F2F2F7;
 
@@ -167,10 +169,8 @@
     --glass-edge: rgba(0, 0, 0, 0.5);
     --bar-bg: rgba(18, 18, 20, 0.78);
     --scrim: rgba(0, 0, 0, 0.48);
-  --sheet-bg: #1C1C1E;
-  --sheet-card: #2C2C2E;
-  --sheet-card-2: #3A3A3C;
     --sheet-bg: #1C1C1E;
+    --statusbar-scrim: none;
     --sheet-card: #2C2C2E;
     --sheet-card-2: #3A3A3C;
     --shadow-1: none;
@@ -204,6 +204,7 @@
   --bar-bg: rgba(18, 18, 20, 0.78);
   --scrim: rgba(0, 0, 0, 0.48);
   --sheet-bg: #1C1C1E;
+  --statusbar-scrim: none;
   --sheet-card: #2C2C2E;
   --sheet-card-2: #3A3A3C;
   --shadow-1: none;
