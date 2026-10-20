@@ -1,0 +1,25 @@
+/* Ara — önek: srch- */
+.srch-out { margin-top: var(--s5); }
+.srch-count { margin-left: 4px; color: var(--label-3); font-variant-numeric: tabular-nums; }
+
+.srch-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.srch-chips .chip { height: 36px; }
+.srch-hint { margin: var(--s2) var(--s4) 0; text-align: center; font-size: var(--fs-footnote); line-height: 1.4; color: var(--label-2); }
+
+.srch-rec-head { display: flex; align-items: baseline; justify-content: space-between; }
+.srch-clear { min-height: 28px; margin: 0 var(--s4) 7px; padding: 0; font-size: var(--fs-subhead); color: var(--tint); }
+.srch-rec-ic { width: 20px; display: grid; place-items: center; color: var(--label-3); }
+.srch-rec-ic svg { width: 18px; height: 18px; }
+
+.srch-title { overflow-wrap: anywhere; display: -webkit-box !important; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; font-weight: 600; }
+.srch-pw { display: block; font-size: var(--fs-caption1); font-weight: 600; color: var(--label-2); margin: 1px 0 1px; }
+.srch-pw::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--c); margin-right: 5px; vertical-align: 0; }
+.srch-snip, .srch-row .row-subtitle { overflow-wrap: anywhere; }
+.srch-snip {
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  font-size: var(--fs-footnote); line-height: 1.38; color: var(--label-2);
+}
+.srch-field { font-size: var(--fs-caption1); font-weight: 600; color: var(--label-2); }
+.srch-bolt svg { width: 16px; height: 16px; }
+.srch-more { min-height: 44px; padding: 0 var(--s2); color: var(--tint); font-size: var(--fs-subhead); font-weight: 500; }
+.section-footer:has(.srch-more) { margin-top: 0; text-align: center; }

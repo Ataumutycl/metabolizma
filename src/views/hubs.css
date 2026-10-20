@@ -1,0 +1,62 @@
+/* Kavşaklar — önek: hub- */
+
+/* Kavşak grafiği */
+.hub-graph { padding: 14px 12px 6px; margin-bottom: var(--s6); overflow: hidden; }
+.hub-graph-head { display: flex; justify-content: space-between; padding: 0 4px 2px; }
+.hub-graph-body { position: relative; height: 168px; }
+.hub-gline { position: absolute; left: 0; top: 0; width: 100%; height: 164px; overflow: visible; }
+.hub-gline path {
+  fill: none; stroke: var(--fill); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1 7;
+}
+.hub-gnode {
+  position: absolute; transform: translate(-50%, -22px);
+  width: 25%; min-height: 70px;
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  text-align: center; transition: transform var(--dur-1) ease;
+}
+.hub-gnode:active { transform: translate(-50%, -22px) scale(0.93); }
+.hub-gdot {
+  width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center; flex-shrink: 0;
+  font-family: var(--font-rounded); font-weight: 700; font-size: 17px; color: #fff;
+  background: var(--tile); background-image: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 60%);
+  box-shadow: 0 0 0 4px var(--bg-elevated);
+}
+.hub-glabel {
+  font-size: var(--fs-caption2); line-height: 1.15; font-weight: 600; color: var(--label-2);
+  max-width: 100%; overflow-wrap: anywhere;
+}
+
+/* Liste */
+.hub-counts { display: inline-flex; gap: 8px; font-size: var(--fs-footnote); color: var(--label-3); font-variant-numeric: tabular-nums; }
+.hub-counts span { display: inline-flex; align-items: center; gap: 2px; }
+.hub-counts svg { width: 12px; height: 12px; }
+
+/* Kavşak başlık kartı */
+.hub-head { margin-bottom: var(--s6); }
+.hub-head-top { display: flex; gap: var(--s3); align-items: center; }
+.hub-head-body { min-width: 0; flex: 1; }
+.hub-head-name { margin: 0; overflow-wrap: anywhere; }
+.hub-head-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: var(--s3); }
+.hub-comp { display: inline-flex; align-items: center; gap: 5px; font-size: var(--fs-subhead); color: var(--label-2); }
+.hub-comp svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* Gelen / giden bölümleri */
+.hub-flow .section-header { display: flex; align-items: center; gap: 6px; }
+.hub-sec-ic { width: 18px; height: 18px; display: inline-grid; place-items: center; border-radius: 50%; color: #fff; }
+.hub-sec-ic svg { width: 11px; height: 11px; }
+.hub-sec-ic.is-in { background: var(--teal); }
+.hub-sec-ic.is-out { background: var(--orange); }
+.hub-item { padding-top: 12px; padding-bottom: 12px; }
+.hub-item-label { display: block; font-size: var(--fs-subhead); font-weight: 600; color: var(--label); margin-bottom: 2px; }
+.hub-item-text { display: block; font-size: var(--fs-callout); line-height: 1.38; overflow-wrap: anywhere; }
+.hub-regs { display: flex; flex-direction: column; gap: 5px; margin-top: 8px; }
+.hub-reg {
+  display: block; padding: 6px 10px; border-radius: var(--r-sm);
+  background: var(--bg-elevated-2); font-size: var(--fs-subhead); line-height: 1.4; color: var(--label);
+  overflow-wrap: anywhere;
+}
+.hub-reg .sign { vertical-align: -3px; margin-right: 4px; }
+.hub-item-tail { display: flex; gap: 6px; align-items: flex-start; margin-top: 8px; font-size: var(--fs-subhead); color: var(--label-2); }
+.hub-item-tail svg { width: 14px; height: 14px; margin-top: 3px; flex-shrink: 0; color: var(--label-3); }
+.hub-bolt svg { width: 17px; height: 17px; }

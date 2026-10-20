@@ -1,0 +1,206 @@
+/* =====================================================================
+   YOLAKLAR (pw-)
+   ===================================================================== */
+.pw-list-lg { --row-inset: 72px; }
+.pw-mini { height: 20px; padding: 0 7px; gap: 3px; }
+.pw-mini svg { width: 11px; height: 11px; }
+
+/* ---- Fizyolojik durum kartı ---- */
+.pw-state { padding: 12px; }
+.pw-state-body { padding: 14px 4px 4px; }
+.pw-state-head { display: flex; align-items: center; gap: 10px; }
+.pw-state-head .icon-tile { width: 28px; height: 28px; border-radius: 7px; }
+.pw-state-head .icon-tile svg { width: 17px; height: 17px; }
+.pw-state-text { margin: 8px 0 0; }
+.pw-focus { margin-top: 12px; }
+.pw-focus-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+
+/* ---- Yolak üst bilgi kartı ---- */
+.pw-head { padding: 16px; }
+.pw-head-top { display: flex; gap: 14px; align-items: center; }
+.pw-head-text { flex: 1; min-width: 0; }
+.pw-head-title { margin: 0; line-height: 1.22; overflow-wrap: anywhere; }
+.pw-comp { display: flex; align-items: flex-start; gap: 5px; margin-top: 6px; color: var(--label-2); font-size: var(--fs-footnote); line-height: 1.35; }
+.pw-comp svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; color: var(--label-2); }
+.pw-label { font-size: var(--fs-footnote); font-weight: 600; color: var(--label-2); margin-bottom: 4px; }
+.pw-eq-wrap { margin-top: 16px; }
+.pw-eq { font-family: var(--font-mono); font-size: 0.86rem; line-height: 1.5; overflow-wrap: anywhere; word-break: break-word; }
+.pw-bridges { margin-top: 16px; }
+.pw-bridge { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-top: 0.5px solid var(--separator); }
+.pw-bridge:last-child { padding-bottom: 0; }
+.pw-bridge > div { min-width: 0; overflow-wrap: anywhere; }
+.pw-bridge .icon-tile { margin-top: 1px; }
+.pw-note {
+  display: flex; gap: 10px; align-items: flex-start;
+  margin-top: 14px; padding: 11px 12px; border-radius: var(--r-sm);
+  font-size: var(--fs-subhead); line-height: 1.38;
+}
+.pw-note svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 1px; }
+.pw-note.is-fed { background: var(--activator-soft); color: var(--activator-text); }
+.pw-note.is-fast { background: var(--fasting-soft); color: var(--fasting-text); }
+.pw-spacer { height: var(--s6); }
+
+.pw-sec .section-header, .pw-steps-sec .section-header { display: flex; align-items: center; gap: 8px; }
+.pw-sec .section-header svg { width: 22px; height: 22px; }
+.pw-sec.is-jn .section-header svg { color: var(--junction); }
+.pw-sec.is-clin .section-header svg { color: var(--clinical); }
+.pw-count { margin-left: auto; font-size: var(--fs-subhead); font-weight: 500; color: var(--label-2); }
+
+/* ---- Sürekli omurga ---- */
+.pw-spine { position: relative; }
+.pw-node-row { display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: 10px; }
+.pw-rail { position: relative; }
+.pw-rail::before {
+  content: ""; position: absolute; left: 50%; top: 30px; bottom: -6px; width: 2px; margin-left: -1px;
+  background: color-mix(in srgb, var(--pw-c) 55%, transparent); border-radius: 1px;
+}
+.pw-node-row:last-child .pw-rail::before { display: none; }
+.pw-node {
+  position: relative; z-index: 1;
+  display: grid; place-items: center;
+  width: 28px; height: 28px; margin-top: 12px; border-radius: 50%;
+  background: var(--pw-c); color: #fff;
+  font-family: var(--font-rounded); font-weight: 700; font-size: 13px;
+  box-shadow: 0 0 0 4px var(--bg);
+}
+.pw-step {
+  display: flex; flex-direction: column; align-items: stretch; gap: 4px;
+  width: 100%; margin-bottom: 12px; padding: 14px 14px 12px;
+  background: var(--bg-elevated); border-radius: var(--r-lg); box-shadow: var(--shadow-1);
+  text-align: left; color: var(--label);
+  transition: transform var(--dur-1) ease, opacity var(--dur-2) ease;
+}
+.pw-node-row:last-child .pw-step { margin-bottom: 0; }
+.pw-step:active { transform: scale(0.98); }
+.pw-step.is-suppressed { opacity: 0.5; }
+.pw-step-name { font-size: var(--fs-headline); font-weight: 600; line-height: 1.25; }
+.pw-step-note { font-size: var(--fs-footnote); color: var(--label-2); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.pw-step-rx { margin-top: 6px; font-size: var(--fs-subhead); line-height: 1.38; overflow-wrap: anywhere; }
+.pw-step-rx .pw-sub { color: var(--label-2); }
+.pw-step-rx .pw-rx-arrow { display: inline-block; width: 13px; height: 13px; margin: 0 5px; vertical-align: -1px; color: var(--label-3); }
+.pw-step-rx .pw-prod { font-weight: 600; }
+.pw-step-enz { font-size: var(--fs-footnote); color: var(--label-2); line-height: 1.35; margin-top: 2px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
+.pw-step-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 8px; min-height: 22px; }
+.pw-step-badges { display: flex; flex-wrap: wrap; gap: 6px; min-width: 0; }
+.pw-counts { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-left: auto; }
+.pw-cnt { display: inline-flex; align-items: center; gap: 4px; font-size: var(--fs-footnote); font-weight: 600; color: var(--label-2); font-variant-numeric: tabular-nums; }
+
+/* ---- Adım sayfası: üst bilgi ---- */
+.pw-sh { padding: 8px 4px 20px; }
+.pw-chip {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px 0 10px; margin-left: -2px;
+  border-radius: var(--r-pill); background: var(--bg-elevated); box-shadow: var(--shadow-1);
+  font-size: var(--fs-subhead); font-weight: 600;
+  transition: transform var(--dur-1) ease, background var(--dur-1) ease;
+}
+.pw-chip:active { transform: scale(0.97); background: var(--fill-3); }
+.pw-chip .icon-tile { width: 26px; height: 26px; border-radius: 7px; }
+.pw-chip .icon-tile svg { width: 16px; height: 16px; }
+.pw-chip .row-chevron { width: 7px; height: 12px; margin-left: 2px; }
+.pw-sh-step { margin-top: 16px; font-size: var(--fs-subhead); line-height: 1.35; color: var(--label-2); }
+.pw-sh-name { font-weight: 600; color: var(--pw-c); filter: saturate(1.1); }
+.pw-sh-enz { margin: 4px 0 0; overflow-wrap: anywhere; letter-spacing: 0; }
+.pw-sh-sub { margin: 6px 0 0; }
+.pw-cof { display: flex; gap: 8px; align-items: flex-start; margin-top: 12px; font-size: var(--fs-subhead); line-height: 1.38; color: var(--label-2); }
+.pw-cof svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; }
+.pw-cof > div { min-width: 0; overflow-wrap: anywhere; }
+.pw-cof > div > div + div { margin-top: 2px; }
+.pw-sh-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+.pw-sh-badges:not(:empty) { margin-top: 14px; }
+
+/* ---- Tepkime diyagramı ---- */
+.pw-rx-card { padding: 20px 16px 18px; }
+.pw-rx { display: flex; flex-direction: column; align-items: stretch; }
+.pw-rx-box {
+  display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center;
+  padding: 11px 14px; border-radius: var(--r-md);
+  background: var(--bg-elevated-2);
+}
+.pw-rx-cap { font-size: var(--fs-caption2); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--label-2); }
+.pw-rx-txt { font-size: var(--fs-subhead); line-height: 1.35; overflow-wrap: anywhere; max-width: 100%; }
+.pw-rx-box.is-prod .pw-rx-txt { font-weight: 600; }
+.pw-rx-box.is-prod { background: color-mix(in srgb, var(--pw-c) 9%, var(--bg-elevated-2)); }
+.pw-rx-down { width: 20px; height: 30px; align-self: center; margin: 4px 0; color: var(--label-3); flex-shrink: 0; }
+.pw-rx-mid { display: grid; grid-template-columns: minmax(58px, 1fr) minmax(0, 2.15fr) minmax(58px, 1fr); align-items: center; gap: 4px; }
+.pw-rx-side { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 0; }
+.pw-rx-side > span { font-size: var(--fs-caption1); font-weight: 600; line-height: 1.2; text-align: center; white-space: nowrap; }
+.pw-rx-side.is-act { color: var(--activator-text); }
+.pw-rx-side.is-inh { color: var(--inhibitor-text); }
+.pw-ar { width: 100%; max-width: 76px; height: auto; }
+.pw-ar.is-act { color: var(--activator); }
+.pw-ar.is-inh { color: var(--inhibitor); }
+.pw-rx-enz {
+  position: relative; display: grid; place-items: center; text-align: center;
+  min-height: 56px; padding: 10px 8px; border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--pw-c) 16%, var(--bg-elevated));
+  box-shadow: inset 0 0 0 1.5px var(--pw-c);
+  font-size: 0.85rem; font-weight: 600; line-height: 1.22; overflow-wrap: break-word; hyphens: manual;
+}
+.pw-rx-enz.is-rate { box-shadow: inset 0 0 0 2.5px var(--rate), 0 0 0 4px var(--rate-soft); }
+.pw-rx-enz > span:not(.pw-rx-bolt) { min-width: 0; }
+.pw-rx-bolt {
+  position: absolute; top: -9px; right: 4px; width: 24px; height: 24px; border-radius: 50%;
+  display: grid; place-items: center; background: var(--rate); color: #fff;
+  box-shadow: 0 0 0 3px var(--bg-elevated);
+}
+.pw-rx-bolt svg { width: 13px; height: 13px; }
+
+/* ---- Düzenleyici listeleri ---- */
+.pw-reg { padding-top: 13px; padding-bottom: 13px; }
+.pw-reg > .sign { margin-top: 1px; }
+.pw-reg .row-body { display: block; }
+.pw-reg-label { display: block; font-size: var(--fs-caption1); font-weight: 600; line-height: 1.3; margin-bottom: 2px; }
+.pw-reg-body { display: block; font-size: var(--fs-callout); line-height: 1.42; overflow-wrap: anywhere; }
+.pw-reg-body .sign { vertical-align: -3px; margin: 0 1px; }
+
+/* ---- Bağlantılar ---- */
+.pw-conn-list .row { padding-top: 12px; padding-bottom: 12px; }
+.pw-conn-list .icon-tile { margin-top: 1px; }
+.pw-conn-text { display: block; font-size: var(--fs-callout); line-height: 1.4; overflow-wrap: anywhere; }
+.pw-conn-list .row-subtitle { margin-top: 3px; font-size: var(--fs-footnote); }
+
+/* ---- Klinik ---- */
+.pw-clin { padding: 18px 18px 0; }
+.pw-clin-kicker { font-size: var(--fs-caption1); font-weight: 600; color: var(--clinical-text); margin-bottom: 6px; }
+.pw-clin-title { margin: 0 0 10px; line-height: 1.3; overflow-wrap: anywhere; }
+.pw-clin .reading { margin: 0 0 14px; overflow-wrap: anywhere; hyphens: auto; -webkit-hyphens: auto; text-wrap: pretty; }
+
+/* ---- Alt araç çubuğu ---- */
+.pw-tb { padding: 0 16px 0 10px; }
+.pw-tb[data-tb=next] { padding: 0 10px 0 16px; }
+.pw-tb[disabled] { opacity: 0.4; pointer-events: none; }
+.pw-tb span { font-size: 16px; font-weight: 600; }
+.pw-tb svg { width: 20px; height: 20px; }
+.pw-tb-count { pointer-events: none; padding: 0 16px; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--label-2); }
+
+/* ---- Simgeler ---- */
+.pw-glyph { width: 56px; display: grid; place-items: center; flex-shrink: 0; }
+.pw-glyph .pw-ar { width: 56px; }
+.pw-legend-list { --row-inset: 84px; }
+.pw-swatch { width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0; background: color-mix(in srgb, var(--pw-c) 30%, transparent); box-shadow: inset 0 0 0 2px var(--pw-c); }
+.row-title ~ .row-subtitle { overflow-wrap: anywhere; }
+.page-content > .section:first-child, .page-content > .card:first-child { margin-top: 14px; }
+.pw-conn-list .row-chevron { align-self: center; }
+.pw-eq { font-size: 0.8rem; }
+.pw-conn-text .sign { vertical-align: -3px; }
+
+/* Klinik korelasyon özeti (dokunulabilir kart) */
+.pw-clin.is-tappable { cursor: pointer; transition: transform var(--dur-1) ease, background var(--dur-1) ease; }
+.pw-clin.is-tappable:active { transform: scale(0.985); background: color-mix(in srgb, var(--clinical) 6%, var(--bg-elevated)); }
+.pw-clin-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 12px; }
+.pw-clin-chip {
+  display: inline-flex; align-items: center; gap: 5px; max-width: 100%;
+  min-height: 28px; padding: 4px 10px; border-radius: var(--r-pill);
+  background: var(--clinical-soft); color: var(--clinical-text);
+  font-size: var(--fs-footnote); font-weight: 600; line-height: 1.25;
+}
+.pw-clin-chip svg { width: 14px; height: 14px; flex-shrink: 0; }
+.pw-clin-full { border-top: 0.5px solid var(--separator); padding-top: 12px; margin-top: 2px; }
+.pw-clin-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin: 0 -18px; padding: 0 18px; border-top: 0.5px solid var(--separator);
+  min-height: 48px;
+}
+.pw-clin-more { min-height: 44px; padding: 0; color: var(--tint); font-size: var(--fs-subhead); font-weight: 500; }
+.pw-clin-go { display: inline-flex; align-items: center; gap: 3px; color: var(--clinical-text); font-size: var(--fs-subhead); font-weight: 600; }
+.pw-clin-go svg { width: 14px; height: 14px; }

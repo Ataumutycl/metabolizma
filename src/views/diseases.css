@@ -1,0 +1,25 @@
+/* Hastalıklar — önek: dis- */
+.dis-mech { padding: var(--s4); margin-bottom: var(--s5); display: flex; flex-direction: column; align-items: stretch; }
+.dis-m-k { display: block; font-size: var(--fs-caption1); font-weight: 700; letter-spacing: 0.01em; }
+.dis-m-enz {
+  border-radius: var(--r-md); padding: 10px 14px; text-align: center;
+  background: var(--clinical-soft); color: var(--clinical-text);
+}
+.dis-m-enz .dis-m-v { display: block; font-size: var(--fs-subhead); font-weight: 600; line-height: 1.3; margin-top: 1px; overflow-wrap: anywhere; }
+.dis-m-arrows { display: grid; grid-template-columns: 1fr 1fr; height: 30px; }
+.dis-m-arrows span { display: grid; place-items: center; }
+.dis-m-arrows svg { width: 20px; height: 20px; }
+.dis-m-arrows .is-up { color: var(--orange); }
+.dis-m-arrows .is-up svg { transform: rotate(180deg); }
+.dis-m-arrows .is-down { color: var(--blue); }
+.dis-m-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.dis-m-box { border-radius: var(--r-md); padding: 10px 12px; min-width: 0; }
+.dis-m-box.is-up { background: color-mix(in srgb, var(--orange) 15%, transparent); }
+.dis-m-box.is-up .dis-m-k { color: var(--orange-text); }
+.dis-m-box.is-down { background: color-mix(in srgb, var(--blue) 14%, transparent); }
+.dis-m-box.is-down .dis-m-k { color: var(--blue); }
+.dis-m-t {
+  display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  margin-top: 2px; font-size: var(--fs-footnote); line-height: 1.35; overflow-wrap: anywhere;
+}
+.dis-more { font-size: var(--fs-caption1); color: var(--label-2); font-weight: 600; }

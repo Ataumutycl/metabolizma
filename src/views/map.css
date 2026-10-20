@@ -1,0 +1,228 @@
+/* =====================================================================
+   HARİTA — sınıf öneki: map-
+   ===================================================================== */
+.map-page .navbar { display: none; }
+
+.map-root {
+  position: absolute; inset: 0; overflow: hidden;
+  background: var(--bg);
+  --map-sh: rgba(30, 30, 60, 0.13);
+  -webkit-user-select: none; user-select: none;
+  -webkit-touch-callout: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .map-root { --map-sh: transparent; }
+}
+:root[data-theme="dark"] .map-root { --map-sh: transparent; }
+
+.map-vp {
+  position: absolute; inset: 0;
+  touch-action: none;
+  cursor: grab;
+  background-color: var(--bg);
+  background-image: radial-gradient(circle, var(--label-4) 1.1px, transparent 1.6px);
+  background-size: 40px 40px;
+  overflow: hidden;
+}
+.map-vp.is-grab { cursor: grabbing; }
+.map-svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: hidden; font-family: var(--font); touch-action: none; }
+.map-world { transform-origin: 0 0; will-change: transform; }
+.map-zones, .map-edges, .map-regs { pointer-events: none; }
+
+/* ---- Yakınlık seviyeleri: kalın çizgi ölçüsü ---- */
+.lv-0 { --ew: 7px; --rw: 7px; --nw: 2.6px; }
+.lv-1 { --ew: 4.2px; --rw: 4px; --nw: 1.5px; }
+.lv-2 { --ew: 2.8px; --rw: 2.6px; --nw: 1px; }
+.lv-3 { --ew: 2.2px; --rw: 2.2px; --nw: 0.8px; }
+
+/* ---- Bölgeler ---- */
+.map-zone rect {
+  fill: color-mix(in srgb, var(--zc) 7%, transparent);
+  stroke: color-mix(in srgb, var(--zc) 26%, transparent);
+  stroke-width: 1.5px;
+}
+.map-zl, .map-zs, .map-zf { fill: color-mix(in srgb, var(--zc) 78%, var(--label)); }
+.map-zl { font-size: 25px; font-weight: 700; letter-spacing: 0.07em; }
+.map-zs { font-size: 17px; font-weight: 500; fill: var(--label-2); }
+.map-zf { display: none; font-size: 64px; font-weight: 800; letter-spacing: 0.04em; }
+.lv-0 .map-zl, .lv-0 .map-zs, .lv-1 .map-zl, .lv-1 .map-zs { display: none; }
+.lv-0 .map-zf, .lv-1 .map-zf { display: block; }
+.lv-1 .map-zf { font-size: 54px; }
+
+/* ---- Bağlantılar ---- */
+.map-edge {
+  fill: none;
+  stroke: var(--ec);
+  stroke-opacity: 0.7;
+  stroke-width: var(--ew);
+  stroke-linecap: round;
+  transition: opacity 0.2s ease;
+}
+.map-edge.is-dashed { stroke-dasharray: calc(var(--ew) * 3.2) calc(var(--ew) * 2.4); stroke-linecap: butt; }
+.map-ah { fill-opacity: 0.85; stroke: none; }
+.map-elabel { transition: opacity 0.2s ease; }
+.map-elabel rect { fill: var(--bg-elevated); stroke: var(--separator); stroke-width: 0.5px; }
+.map-elabel text { fill: var(--label-2); font-weight: 500; text-anchor: middle; }
+.lv-0 .map-elabel, .lv-1 .map-elabel, .lv-2 .map-elabel { display: none; }
+
+/* ---- Düğümler ---- */
+.map-node { cursor: pointer; transition: opacity 0.2s ease; }
+.map-hit { fill: transparent; }
+.map-sh { fill: var(--map-sh); }
+.map-card { fill: var(--bg-elevated); stroke: var(--separator); stroke-width: var(--nw); }
+.map-tint { fill: var(--pc); opacity: 0; pointer-events: none; }
+.lv-0 .map-tint { opacity: 0.5; }
+.lv-1 .map-tint { opacity: 0.16; }
+.map-strip { fill: var(--pc); pointer-events: none; }
+.map-ring { fill: none; stroke: var(--pc); stroke-width: calc(var(--rw) * 1); pointer-events: none; }
+.map-ring.is-rate { stroke: var(--orange); }
+.k-rate .map-ring.is-rate { stroke-width: var(--rw); }
+.k-hub .map-card { fill: var(--bg-elevated); }
+.map-t { fill: var(--label); font-weight: 600; text-anchor: middle; pointer-events: none; }
+.k-hub .map-t { font-weight: 700; }
+.map-s { fill: var(--label-2); font-weight: 400; text-anchor: middle; pointer-events: none; }
+.lv-0 .map-t, .lv-0 .map-s, .lv-1 .map-s { display: none; }
+.map-bolt { pointer-events: none; }
+.map-bolt circle { fill: var(--orange); }
+.map-bolt path { fill: #fff; }
+.map-selring { fill: none; stroke: var(--tint); stroke-width: 3.5px; opacity: 0; pointer-events: none; transition: opacity 0.15s ease; }
+.lv-0 .map-selring, .lv-1 .map-selring { stroke-width: 7px; }
+.map-node.is-sel .map-selring { opacity: 1; }
+.has-sel .map-node:not(.is-rel) { opacity: 0.4; }
+.has-sel .map-edge-g:not(.is-rel) { opacity: 0.25; }
+.has-sel .map-reg:not(.is-rel) { opacity: 0.25; }
+.map-edge-g, .map-reg { transition: opacity 0.2s ease; }
+
+/* ---- Düzenleyici (şema dışı) çağrıları ---- */
+.map-regbox { stroke-width: 1px; }
+.map-reg.is-act .map-regbox { fill: color-mix(in srgb, var(--activator) 11%, var(--bg-elevated)); stroke: color-mix(in srgb, var(--activator) 50%, transparent); }
+.map-reg.is-inh .map-regbox { fill: color-mix(in srgb, var(--inhibitor) 9%, var(--bg-elevated)); stroke: color-mix(in srgb, var(--inhibitor) 45%, transparent); }
+.map-regcap { font-size: 9.5px; font-weight: 700; letter-spacing: 0.03em; }
+.map-reg.is-act .map-regcap { fill: var(--activator-text); }
+.map-reg.is-inh .map-regcap { fill: var(--inhibitor-text); }
+.map-regtx { font-size: 11px; font-weight: 500; fill: var(--label); }
+.map-regline { fill: none; stroke-width: 2px; stroke-linecap: round; }
+.map-reg.is-act .map-regline { stroke: var(--activator); }
+.map-reg.is-inh .map-regline { stroke: var(--inhibitor); }
+.map-regline.is-bar { stroke-width: 3px; }
+.map-regarrow { stroke: none; }
+.map-reg.is-act .map-regarrow { fill: var(--activator); }
+.map-regdot { stroke: var(--bg-elevated); stroke-width: 1.5px; }
+.map-reg.is-act .map-regdot { fill: var(--activator); }
+.map-reg.is-inh .map-regdot { fill: var(--inhibitor); }
+.map-regsign { fill: #fff; font-size: 14px; font-weight: 800; text-anchor: middle; font-family: var(--font-rounded); }
+.lv-0 .map-regs, .lv-1 .map-regs, .no-reg .map-regs { display: none; }
+
+/* ---- Cam kontroller ---- */
+.map-title, .map-ctrl, .map-scale {
+  position: absolute; z-index: 5;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur); backdrop-filter: var(--glass-blur);
+  box-shadow: inset 0 0 0 0.5px var(--glass-border), 0 0 0 0.5px var(--glass-edge), var(--shadow-float);
+}
+.map-title {
+  top: calc(var(--safe-top) + 8px);
+  left: calc(var(--margin) + var(--safe-left));
+  height: 46px; padding: 0 18px;
+  border-radius: 23px;
+  display: flex; flex-direction: column; justify-content: center;
+  pointer-events: none;
+  max-width: calc(100% - 2 * var(--margin) - 44px - 12px - var(--safe-left) - var(--safe-right));
+}
+.map-title-main { font-size: 16px; line-height: 19px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.map-title-sub { font-size: var(--fs-caption1); line-height: 14px; color: var(--label-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.map-ctrl {
+  top: calc(var(--safe-top) + 8px);
+  right: calc(var(--margin) + var(--safe-right));
+  width: 46px; border-radius: 23px;
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.map-ctrl button {
+  position: relative;
+  width: 46px; height: 46px; flex-shrink: 0;
+  display: grid; place-items: center;
+  color: var(--label);
+  transition: background-color var(--dur-1) ease, color var(--dur-1) ease;
+}
+.map-ctrl button + button::before {
+  content: ""; position: absolute; top: 0; left: 11px; right: 11px;
+  border-top: 0.5px solid var(--separator);
+}
+.map-ctrl button:active { background: var(--fill-3); transition: none; }
+.map-ctrl button svg { width: 22px; height: 22px; }
+.map-ctrl button.is-off { color: var(--label-2); }
+.map-ctrl button[data-act="legend"] { color: var(--tint); }
+
+.map-scale {
+  left: calc(var(--margin) + var(--safe-left));
+  bottom: calc(var(--tabbar-h) + max(calc(var(--safe-bottom) - 6px), 12px) + 14px);
+  height: 28px; padding: 0 12px; border-radius: 14px;
+  display: flex; align-items: center;
+  font-size: var(--fs-caption1); font-weight: 600; font-variant-numeric: tabular-nums;
+  color: var(--label-2);
+  opacity: 0; transform: translateY(4px); pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s var(--ease-out);
+}
+.map-scale.is-on { opacity: 1; transform: none; transition-duration: 0.1s; }
+
+/* ---- Düğüm sayfası ---- */
+.map-sh-head { margin: 0 var(--s1) var(--s4); }
+.map-sh-title { margin-top: var(--s3); }
+.map-sh-sub { margin-top: 4px; }
+.map-pwchip {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 36px; padding: 0 12px 0 3px; border-radius: var(--r-pill);
+  background: var(--bg-elevated); box-shadow: var(--shadow-1);
+  font-size: var(--fs-subhead); font-weight: 600;
+}
+.map-pwchip .icon-tile { width: 30px; height: 30px; border-radius: 15px; }
+.map-pwchip .icon-tile svg { width: 17px; height: 17px; }
+.map-actions { display: grid; gap: var(--s2); margin-bottom: var(--s6); }
+.map-regcard { padding: var(--s3) var(--s4); }
+.map-reggrp + .map-reggrp { margin-top: var(--s3); padding-top: var(--s3); border-top: 0.5px solid var(--separator); }
+.map-reglab { font-size: var(--fs-footnote); color: var(--label-2); margin-bottom: 6px; font-weight: 500; }
+.map-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.map-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 30px; padding: 4px 11px 4px 6px; border-radius: var(--r-pill);
+  font-size: var(--fs-subhead); line-height: 1.2; font-weight: 500;
+}
+.map-pill.is-act { background: var(--activator-soft); color: var(--activator-text); }
+.map-pill.is-inh { background: var(--inhibitor-soft); color: var(--inhibitor-text); }
+.map-hubcard { padding: var(--s4) 0 0; overflow: hidden; }
+.map-hubhead { display: flex; align-items: center; gap: var(--s3); padding: 0 var(--s4) var(--s3); }
+.map-hubhead-tx { min-width: 0; }
+.map-hubcard .section { margin: 0 var(--s3) var(--s3); }
+.map-hubcard .section-header { margin-left: var(--s1); }
+.map-hubcard .list { background: var(--bg-elevated-2); box-shadow: none; border-radius: var(--r-md); }
+.map-li { position: relative; display: flex; gap: 10px; align-items: flex-start; padding: 10px 14px; font-size: var(--fs-subhead); line-height: 1.35; }
+.map-li + .map-li::before, .map-more::before { content: ""; position: absolute; top: 0; left: 40px; right: 0; border-top: 0.5px solid var(--separator); }
+.map-li-ic { flex-shrink: 0; width: 20px; height: 20px; margin-top: 1px; display: grid; place-items: center; }
+.map-li-ic svg { width: 16px; height: 16px; }
+.map-li-ic.is-in { color: var(--activator-text); }
+.map-li-ic.is-out { color: var(--rate-text); }
+.map-li-tx { min-width: 0; overflow-wrap: anywhere; }
+.map-more { position: relative; display: flex; width: 100%; align-items: center; min-height: 44px; padding: 0 14px 0 44px; color: var(--tint); font-size: var(--fs-subhead); font-weight: 500; }
+.map-more:active { background: var(--fill-3); }
+.map-hubcard .section:last-child { margin-bottom: var(--s3); }
+
+/* ---- Rehber ---- */
+.map-sw {
+  width: 30px; height: 30px; flex-shrink: 0; border-radius: 9px;
+  background: color-mix(in srgb, var(--zc) 16%, var(--bg-elevated));
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--zc) 55%, transparent);
+}
+.map-pv {
+  position: relative; width: 30px; height: 20px; flex-shrink: 0; margin: 5px 0;
+  background: var(--bg-elevated); box-shadow: inset 0 0 0 1px var(--separator-opaque);
+}
+.map-pv.is-met { border-radius: 10px; }
+.map-pv.is-enz { border-radius: 6px; box-shadow: inset 0 0 0 1px var(--separator-opaque), inset 5px 0 0 -2px var(--tint); }
+.map-pv.is-rate { border-radius: 6px; box-shadow: inset 0 0 0 2px var(--orange); }
+.map-pv.is-hub { border-radius: 7px; box-shadow: inset 0 0 0 2px var(--tint); }
+.map-pv-bolt { position: absolute; top: -7px; right: -6px; width: 14px; height: 14px; padding: 2px; border-radius: 50%; background: var(--orange); }
+.map-pv-bolt path { fill: #fff; }
+.map-lg-ic { width: 30px; flex-shrink: 0; display: grid; place-items: center; color: var(--label-2); }
+.map-lg-ic svg { width: 22px; height: 22px; }
+.map-lg-ic .sign { width: 22px; height: 22px; font-size: 15px; }

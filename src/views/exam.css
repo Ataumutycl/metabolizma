@@ -1,0 +1,64 @@
+/* Sınav — önek: exam- (ayrıca dis- / tox- paylaşılan bileşenler) */
+.exam-seg { margin: 4px 0 var(--s4); }
+.exam-chips { margin-bottom: var(--s4); }
+.exam-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.exam-sec .section-header { display: flex; align-items: center; gap: 8px; }
+.exam-hcount { margin-left: auto; color: var(--label-3); font-variant-numeric: tabular-nums; }
+.exam-footer { text-align: center; margin: 0 0 var(--s4); font-size: var(--fs-footnote); color: var(--label-2); }
+.exam-controls { display: flex; flex-direction: column; gap: 12px; margin: 0 0 var(--s4); }
+
+/* madde işaretli liste kartı */
+.exam-items { background: var(--bg-elevated); border-radius: var(--r-lg); box-shadow: var(--shadow-1); overflow: hidden; }
+.exam-li {
+  position: relative; padding: 11px var(--s4) 11px 34px;
+  font-size: var(--fs-callout); line-height: 1.38; overflow-wrap: anywhere;
+}
+.exam-li::before {
+  content: ""; position: absolute; left: var(--s4); top: 19px; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--li, var(--label-3));
+}
+.exam-li + .exam-li::after { content: ""; position: absolute; top: 0; left: 34px; right: 0; border-top: 0.5px solid var(--separator); }
+.exam-sec.is-acc { --li: var(--orange); }
+.exam-sec.is-def { --li: var(--blue); }
+.exam-sec.is-ok { --li: var(--green); }
+
+/* sınav ipucu */
+.exam-pearl {
+  border-radius: var(--r-lg); padding: var(--s4);
+  background: color-mix(in srgb, var(--yellow) 17%, var(--bg-elevated));
+  box-shadow: inset 0 0 0 0.5px color-mix(in srgb, var(--yellow) 35%, transparent);
+}
+.exam-pearl-head { display: flex; align-items: center; gap: 8px; font-size: var(--fs-subhead); font-weight: 700; color: var(--orange-text); }
+.exam-pearl-head svg { width: 20px; height: 20px; color: var(--yellow); }
+.exam-pearl-text { margin: 6px 0 0; font-size: var(--fs-body); line-height: 1.43; overflow-wrap: anywhere; }
+
+/* üst bilgi kartı */
+.exam-head { display: flex; gap: var(--s4); align-items: flex-start; background: var(--bg-elevated); border-radius: var(--r-lg); padding: var(--s4); box-shadow: var(--shadow-1); margin: var(--s3) 0 var(--s5); }
+.exam-head-body { min-width: 0; flex: 1; }
+.exam-head-name { margin: 0; overflow-wrap: anywhere; }
+.exam-head-aka { margin: 2px 0 0; color: var(--label-2); font-size: var(--fs-subhead); overflow-wrap: anywhere; }
+.exam-head-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.exam-head-badges .badge { height: auto; min-height: 24px; padding: 4px 9px; white-space: normal; line-height: 1.2; max-width: 100%; overflow-wrap: anywhere; }
+
+.exam-legend { margin: -12px 4px var(--s5); font-size: var(--fs-footnote); color: var(--label-2); line-height: 1.38; }
+.exam-kv { display: flex; flex-direction: column; background: var(--bg-elevated); border-radius: var(--r-lg); box-shadow: var(--shadow-1); overflow: hidden; }
+.exam-kv > div { padding: 11px var(--s4); position: relative; }
+.exam-kv > div + div::before { content: ""; position: absolute; top: 0; left: var(--s4); right: 0; border-top: 0.5px solid var(--separator); }
+.exam-kv .k { font-size: var(--fs-caption1); color: var(--label-2); font-weight: 600; }
+.exam-kv .v { font-size: var(--fs-body); line-height: 1.35; margin-top: 1px; overflow-wrap: anywhere; }
+.exam-kv .v small { color: var(--label-2); font-size: var(--fs-subhead); }
+.exam-gene { font-family: var(--font-mono); font-style: italic; }
+
+/* antidot */
+.exam-antidote { background: var(--activator-soft); border-radius: var(--r-lg); padding: var(--s4); display: flex; gap: var(--s3); align-items: flex-start; }
+.exam-antidote svg { width: 22px; height: 22px; color: var(--activator-text); flex-shrink: 0; margin-top: 1px; }
+.exam-antidote b { display: block; font-size: var(--fs-caption1); color: var(--activator-text); font-weight: 700; margin-bottom: 1px; }
+.exam-antidote span { font-size: var(--fs-body); line-height: 1.38; overflow-wrap: anywhere; }
+
+/* satırlar */
+.exam-row .row-title { font-weight: 600; overflow-wrap: anywhere; }
+.exam-row .badge { vertical-align: 1px; margin-left: 6px; }
+.exam-row .row-subtitle { overflow-wrap: anywhere; }
+.exam-row .exam-hit { display: block; margin-top: 2px; font-size: var(--fs-footnote); color: var(--label-2); }
+.exam-inh-badge { min-width: 30px; justify-content: center; }
+.exam-aka-line { display: block; font-size: var(--fs-footnote); color: var(--label-2); line-height: 1.3; margin: 1px 0 2px; overflow-wrap: anywhere; }
