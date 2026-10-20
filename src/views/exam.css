@@ -40,7 +40,6 @@
 .exam-head-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
 .exam-head-badges .badge { height: auto; min-height: 24px; padding: 4px 9px; white-space: normal; line-height: 1.2; max-width: 100%; overflow-wrap: anywhere; }
 
-.exam-legend { margin: -12px 4px var(--s5); font-size: var(--fs-footnote); color: var(--label-2); line-height: 1.38; }
 .exam-kv { display: flex; flex-direction: column; background: var(--bg-elevated); border-radius: var(--r-lg); box-shadow: var(--shadow-1); overflow: hidden; }
 .exam-kv > div { padding: 11px var(--s4); position: relative; }
 .exam-kv > div + div::before { content: ""; position: absolute; top: 0; left: var(--s4); right: 0; border-top: 0.5px solid var(--separator); }

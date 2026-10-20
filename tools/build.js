@@ -8,8 +8,16 @@ const exists = (p) => fs.existsSync(path.join(root, 'src', p));
 const cssFiles = ['tokens.css', 'components.css', 'views/pathways.css', 'views/map.css', 'views/hubs.css', 'views/enzymes.css', 'views/search.css', 'views/diseases.css', 'views/toxins.css', 'views/exam.css'];
 const jsFiles = ['data.js', 'data-diseases.js', 'data-toxins.js', 'data-summaries.js', 'core.js', 'views/pathways.js', 'views/map.js', 'views/hubs.js', 'views/enzymes.js', 'views/search.js', 'views/diseases.js', 'views/toxins.js', 'views/exam.js', 'main.js'];
 
-const css = cssFiles.filter(exists).map(f => `/* ==== ${f} ==== */\n` + src(f)).join('\n');
-const js = jsFiles.filter(exists).map(f => `/* ==== ${f} ==== */\n` + src(f)).join('\n;\n');
+let css = cssFiles.filter(exists).map(f => `/* ==== ${f} ==== */\n` + src(f)).join('\n');
+let js = jsFiles.filter(exists).map(f => `/* ==== ${f} ==== */\n` + src(f)).join('\n;\n');
+
+// Küçültme (esbuild). --no-minify ile kapatılabilir; esbuild yoksa olduğu gibi kalır.
+if (!process.argv.includes('--no-minify')) {
+  const { execFileSync } = require('child_process');
+  const esbuild = (input, loader) => execFileSync('npx', ['-y', 'esbuild@0.24.0', '--minify', '--loader=' + loader, '--target=safari15', '--charset=utf8', '--legal-comments=none'], { input, maxBuffer: 64 << 20 }).toString();
+  try { css = esbuild(css, 'css'); js = esbuild(js, 'js'); }
+  catch (e) { console.warn('esbuild çalışmadı, küçültmesiz derleniyor:', e.message.split('\n')[0]); }
+}
 
 const pwa = process.argv.includes('--no-pwa') ? '' : [
   '<link rel="manifest" href="manifest.webmanifest">',

@@ -18,13 +18,11 @@
     'chevron.right': `<path ${S} stroke-width="2.4" d="M9 5l7 7-7 7"/>`,
     'chevron.left': `<path ${S} stroke-width="2.4" d="M15 4.5L7.5 12l7.5 7.5"/>`,
     'chevron.down': `<path ${S} stroke-width="2.2" d="M5 9l7 7 7-7"/>`,
-    'chevron.up': `<path ${S} stroke-width="2.2" d="M5 15l7-7 7 7"/>`,
     'xmark': `<path ${S} stroke-width="2.3" d="M6 6l12 12M18 6L6 18"/>`,
     'xmark.circle.fill': `<path ${F} fill-rule="evenodd" d="M12 2a10 10 0 110 20 10 10 0 010-20zm-3.3 5.3a1 1 0 00-1.4 1.4L10.6 12l-3.3 3.3a1 1 0 101.4 1.4l3.3-3.3 3.3 3.3a1 1 0 001.4-1.4L13.4 12l3.3-3.3a1 1 0 00-1.4-1.4L12 10.6z"/>`,
     'plus': `<path ${S} stroke-width="2.2" d="M12 5v14M5 12h14"/>`,
     'minus': `<path ${S} stroke-width="2.2" d="M5 12h14"/>`,
     'magnifyingglass': `<circle ${S} stroke-width="2.1" cx="10.5" cy="10.5" r="6.5"/><path ${S} stroke-width="2.3" d="M15.5 15.5L20 20"/>`,
-    'bolt': `<path ${S} d="M13 2.5L4.5 13.5H11l-1 8 8.5-11H12z"/>`,
     'bolt.fill': `<path ${F} d="M13.4 1.8c.4-.5 1.2-.1 1.1.5L13.6 10h5.2c.6 0 .9.7.5 1.1L10.6 22.2c-.4.5-1.2.1-1.1-.5l.9-7.7H5.2c-.6 0-.9-.7-.5-1.1z"/>`,
     'link': `<path ${S} d="M10 14a4.5 4.5 0 006.4 0l3-3a4.5 4.5 0 00-6.4-6.4l-1.3 1.3"/><path ${S} d="M14 10a4.5 4.5 0 00-6.4 0l-3 3a4.5 4.5 0 006.4 6.4l1.3-1.3"/>`,
     'stethoscope': `<path ${S} d="M5 3v5a5 5 0 0010 0V3"/><path ${S} d="M10 13v2.5a5 5 0 0010 0V13"/><circle ${S} cx="20" cy="11" r="2"/><path ${S} d="M4 3h2M14 3h2"/>`,
@@ -33,7 +31,6 @@
     'arrow.down': `<path ${S} stroke-width="2.1" d="M12 4v15M6 13l6 6 6-6"/>`,
     'arrow.up.right': `<path ${S} stroke-width="2.1" d="M7 17L17 7M9 7h8v8"/>`,
     'arrow.down.right': `<path ${S} stroke-width="2.1" d="M7 7l10 10M17 9v8H9"/>`,
-    'arrow.uturn.left': `<path ${S} d="M9 14L4 9l5-5"/><path ${S} d="M4 9h10.5a5.5 5.5 0 010 11H11"/>`,
     'arrow.2.circlepath': `<path ${S} d="M20 11a8 8 0 00-14.3-4.9L4 8"/><path ${S} d="M4 3.5V8h4.5"/><path ${S} d="M4 13a8 8 0 0014.3 4.9L20 16"/><path ${S} d="M20 20.5V16h-4.5"/>`,
     'arrow.triangle.branch': `<circle ${S} cx="6" cy="5" r="2.2"/><circle ${S} cx="18" cy="5" r="2.2"/><circle ${S} cx="12" cy="19" r="2.2"/><path ${S} d="M6 7.2v1.3a4 4 0 004 4h4a4 4 0 004-4V7.2M12 12.5v4.3"/>`,
     'point.3.connected': `<circle ${S} cx="12" cy="4.8" r="2.3"/><circle ${S} cx="4.8" cy="18" r="2.3"/><circle ${S} cx="19.2" cy="18" r="2.3"/><path ${S} d="M10.9 6.9L5.9 15.9M13.1 6.9l5 9M7.1 18h9.8"/>`,
@@ -42,11 +39,9 @@
     'list.bullet': `<path ${S} d="M9 6h11M9 12h11M9 18h11"/><circle ${F} cx="4.5" cy="6" r="1.4"/><circle ${F} cx="4.5" cy="12" r="1.4"/><circle ${F} cx="4.5" cy="18" r="1.4"/>`,
     'info.circle': `<circle ${S} cx="12" cy="12" r="9"/><path ${S} stroke-width="2.1" d="M12 11v5.5"/><circle ${F} cx="12" cy="7.7" r="1.25"/>`,
     'textformat.size': `<path ${S} d="M3 18l4.5-11L12 18M4.6 14.3h5.8"/><path ${S} d="M13 18l3.5-8.5L20 18M14.3 15.2h4.4"/>`,
-    'gear': `<circle ${S} cx="12" cy="12" r="3.2"/><path ${S} d="M12 2.8v2.4M12 18.8v2.4M21.2 12h-2.4M5.2 12H2.8M18.5 5.5l-1.7 1.7M7.2 16.8l-1.7 1.7M18.5 18.5l-1.7-1.7M7.2 7.2L5.5 5.5"/><circle ${S} cx="12" cy="12" r="6.6"/>`,
     'eye': `<path ${S} d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle ${S} cx="12" cy="12" r="3"/>`,
     'eye.slash': `<path ${S} d="M2.5 12S6 5.5 12 5.5c1.8 0 3.3.5 4.6 1.3M21.5 12s-3.5 6.5-9.5 6.5c-1.8 0-3.3-.5-4.6-1.3"/><path ${S} d="M4 20L20 4"/>`,
     'arrow.up.left.and.arrow.down.right': `<path ${S} d="M4 10V4h6M4 4l6.5 6.5M20 14v6h-6M20 20l-6.5-6.5"/>`,
-    'scope': `<circle ${S} cx="12" cy="12" r="7.5"/><circle ${F} cx="12" cy="12" r="2"/><path ${S} d="M12 2v3M12 19v3M2 12h3M19 12h3"/>`,
     'sun': `<circle ${S} cx="12" cy="12" r="4"/><path ${S} d="M12 2.5v2M12 19.5v2M21.5 12h-2M4.5 12h-2M18.7 5.3l-1.4 1.4M6.7 17.3l-1.4 1.4M18.7 18.7l-1.4-1.4M6.7 6.7L5.3 5.3"/>`,
     'moon': `<path ${S} d="M20 14.5A8.5 8.5 0 019.5 4a8.5 8.5 0 1010.5 10.5z"/>`,
     'circle.lefthalf': `<circle ${S} cx="12" cy="12" r="8.5"/><path ${F} d="M12 3.5a8.5 8.5 0 000 17z"/>`,
@@ -66,7 +61,6 @@
     'sparkles': `<path ${S} d="M10 3.5l1.7 4.8 4.8 1.7-4.8 1.7L10 16.5l-1.7-4.8L3.5 10l4.8-1.7z"/><path ${S} d="M18 14l.8 2.2 2.2.8-2.2.8L18 20l-.8-2.2-2.2-.8 2.2-.8z"/>`,
     'flask': `<path ${S} d="M9 3h6M10 3v6L4.6 18.2A1.8 1.8 0 006.2 21h11.6a1.8 1.8 0 001.6-2.8L14 9V3"/><path ${S} d="M7 15h10"/>`,
     'function': `<path ${S} d="M14.5 4.5c-2 0-3 1-3.4 3L9.5 17c-.4 2-1.4 3-3.4 3M7.5 10h7"/><path ${S} d="M14 13l5 6M19 13l-5 6"/>`,
-    'doc.text': `<path ${S} d="M6 3h8l4.5 4.5V20a1 1 0 01-1 1H6a1 1 0 01-1-1V4a1 1 0 011-1z"/><path ${S} d="M14 3v4.5h4.5M8.5 12.5h7M8.5 16h7"/>`,
     'questionmark.circle': `<circle ${S} cx="12" cy="12" r="9"/><path ${S} stroke-width="2.1" d="M9.4 9.3a2.7 2.7 0 015.2 1c0 1.8-2.6 2.3-2.6 4"/><circle ${F} cx="12" cy="17.3" r="1.2"/>`,
     'clock': `<circle ${S} cx="12" cy="12" r="9"/><path ${S} d="M12 7v5l3.5 2"/>`
   };
@@ -444,7 +438,6 @@
       try { sessionStorage.setItem('metabolizma.tab', id); } catch (e) { /* yok */ }
     },
     topPage() { const t = App.current; return t && t.stack[t.stack.length - 1]; },
-    setTabBarHidden(h) { document.querySelector('.tabbar').classList.toggle('is-hidden', !!h); },
 
     /* SHEET: { title, render(bodyEl, sheet), detent: 'medium'|'large', passive (arkadaki sayfa etkileşimli kalır),
                 onClose, headerLeading (html) } → { el, body, close(), setDetent(d) } */
@@ -456,19 +449,12 @@
       requestAnimationFrame(() => t.classList.add('is-on'));
       clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('is-on'), 1800);
     },
-    /* Bir öğeye kaydırıp kısa vurgu uygular */
-    flash(el) {
-      if (!el) return;
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      el.classList.remove('flash'); void el.offsetWidth; el.classList.add('flash');
-      setTimeout(() => el.classList.remove('flash'), 2000);
-    },
+
     /* UYARI: { title, message, actions: [{ label, style: 'cancel'|'default'|'destructive', onSelect }] } */
     alert(opts) { return openDialog('alert', opts); },
     /* EYLEM MENÜSÜ: { title, message, actions: [{ label, sub, icon (html), style, onSelect }] } — iptal otomatik eklenir */
     actionSheet(opts) { return openDialog('sheet', opts); },
     openSettings() { openSettingsSheet(); },
-    pathwayStyle
   };
   window.App = App;
 

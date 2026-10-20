@@ -21,7 +21,6 @@
 
   /* ---- Dolgular & ayırıcılar ---- */
   --fill: rgba(120, 120, 128, 0.20);
-  --fill-2: rgba(120, 120, 128, 0.16);
   --fill-3: rgba(118, 118, 128, 0.12);
   --fill-4: rgba(116, 116, 128, 0.08);
   --separator: rgba(60, 60, 67, 0.29);
@@ -62,7 +61,6 @@
   --junction-text: var(--teal-text);
   --clinical: var(--purple);           /* klinik korelasyon */
   --clinical-text: var(--purple-text);
-  --fed: var(--green);                 /* tokluk / insülin */
   --fasting: var(--indigo);            /* açlık / glukagon */
   --fasting-text: var(--indigo-text);
 
@@ -111,11 +109,10 @@
 
   /* ---- Boşluk (4pt ızgara) ---- */
   --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 16px;
-  --s5: 20px; --s6: 24px; --s8: 32px; --s10: 40px;
+  --s5: 20px; --s6: 24px; --s10: 40px;
   --margin: 16px;            /* yatay sayfa kenar boşluğu */
 
   /* ---- Köşe yarıçapları (sürekli eğri hissi için büyük değerler) ---- */
-  --r-xs: 6px;    /* rozet */
   --r-sm: 10px;   /* kart içi kutu */
   --r-md: 14px;   /* küçük kart, ikon karesi büyük */
   --r-lg: 22px;   /* gruplu liste bölümü, kart */
@@ -125,7 +122,6 @@
   /* ---- Ölçüler ---- */
   --nav-h: 44px;
   --tabbar-h: 62px;
-  --tabbar-gap: 8px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
   --safe-left: env(safe-area-inset-left, 0px);
@@ -156,7 +152,6 @@
     --bg-elevated-2: #2C2C2E;
     --bg-plain: #000000;
     --fill: rgba(120, 120, 128, 0.36);
-    --fill-2: rgba(120, 120, 128, 0.32);
     --fill-3: rgba(118, 118, 128, 0.24);
     --fill-4: rgba(118, 118, 128, 0.18);
     --separator: rgba(84, 84, 88, 0.60);
@@ -193,7 +188,6 @@
   --bg-elevated-2: #2C2C2E;
   --bg-plain: #000000;
   --fill: rgba(120, 120, 128, 0.36);
-  --fill-2: rgba(120, 120, 128, 0.32);
   --fill-3: rgba(118, 118, 128, 0.24);
   --fill-4: rgba(118, 118, 128, 0.18);
   --separator: rgba(84, 84, 88, 0.60);
