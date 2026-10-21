@@ -407,7 +407,7 @@
             isRateLimiting: true,
             statePreference: 'fed',
             activators: [
-              'En Önemli Allosterik Aktivatör: NADP⁺ (Yüksek NADP⁺ / NADPH oranı enzimi doğrudan hızlandırır)',
+              'Substrat Düzeyinde Kontrol: NADP⁺ (yüksek NADP⁺ / NADPH oranı G6PD akımını doğrudan artırır; hız NADP⁺ bulunabilirliğiyle belirlenir, NADPH ile yarışmalı inhibisyon dengelenir)',
               'Oksidatif Stres Bağlantısı: Eritrositlerde H₂O₂ detoksifikasyonu için Glutatyon Peroksidaz (Se) ve Glutatyon Redüktaz çalıştıkça NADPH tüketilir → NADP⁺ artar → G6PD aktive olur!',
               'Hormonal: İnsülin (Toklukta yağ asidi sentezi için gereken NADPH\'yi sağlamak üzere G6PD gen ekspresyonunu artırır)'
             ],
@@ -463,7 +463,7 @@
             isRateLimiting: false,
             statePreference: 'both',
             activators: [
-              'Substrat dengesi: Hücrenin R5P (bölünen hücreler) veya Xu5P/NADPH-ATP (yağ dokusu/eritrosit) ihtiyacına göre iki yönde de çalışır'
+              'Substrat dengesi: Hücrenin R5P (bölünen hücreler) veya NADPH/ATP (yağ dokusu/eritrosit) ihtiyacına göre iki yönde de çalışır'
             ],
             inhibitors: [
               'Not: Belirgin allosterik düzenleme yoktur; reaksiyonlar tersinirdir'
