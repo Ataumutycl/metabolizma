@@ -149,7 +149,7 @@ window.BIO_TOXINS = [
     action: 'inhibitor',
     mechanism: 'Tiamin pirofosfat (TPP) antimetaboliti; yarışmalı inhibitör.',
     effect: 'Non-oksidatif PPP ve transketolaz aktivitesi düşer (B1 eksikliği modeli).',
-    links: [{ pw: 'hmp', idx: 1 }]
+    links: [{ pw: 'hmp', idx: 4 }]
   },
   {
     id: 'arsenit',

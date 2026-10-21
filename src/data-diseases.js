@@ -102,7 +102,7 @@ window.BIO_DISEASES = [
     labs: ["Serum ve idrar ürik asidi ↑"],
     treatment: ["Allopurinol (ürat düşürücü tedavi)", "Hidrasyon ve idrar alkalizasyonu"],
     pearl: "Riboz-5-P → PRPP basamağının kontrolsüz aktivitesi pürin sentezini ve ürat üretimini artırır.",
-    links: [{ pw: "hmp", idx: 1 }]
+    links: [{ pw: "hmp", idx: 4 }]
   },
   {
     id: "wernicke-korsakoff",
@@ -118,7 +118,7 @@ window.BIO_DISEASES = [
     labs: ["Eritrosit transketolaz aktivasyon testi", "Laktat ↑"],
     treatment: ["Tiyamin parenteral ve glukozdan ÖNCE verilir", "Alkol bırakma ve beslenme desteği"],
     pearl: "Tiyaminsiz hastaya glukoz infüzyonu kalan TPP’yi tüketir ve ensefalopatiyi ağırlaştırır; önce tiyamin.",
-    links: [{ pw: "hmp", idx: 1 }, { pw: "pdh", idx: 0 }, { pw: "tca", idx: 3 }]
+    links: [{ pw: "hmp", idx: 4 }, { pw: "pdh", idx: 0 }, { pw: "tca", idx: 3 }]
   },
   {
     id: "klasik-galaktozemi",

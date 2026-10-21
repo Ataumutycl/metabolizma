@@ -394,15 +394,15 @@
         number: '4',
         title: 'PENTOZ FOSFAT YOLU (Heksoz Monofosfat [HMP] Şantı)',
         compartment: 'Sitozol (Karaciğer, Yağ Dokusu, Adrenal Korteks, Eritrosit, Meme Bezi, Gonadlar)',
-        netEquation: 'Oksidatif: G6P + 2 NADP⁺ + H₂O → Ribuloz-5-P + 2 NADPH + 2 H⁺ + CO₂ (ATP üretilmez ve harcanmaz!)',
+        netEquation: 'Oksidatif faz: G6P + 2 NADP⁺ + H₂O → Ribuloz-5-P + 2 NADPH + 2 H⁺ + CO₂ (ATP üretilmez ve harcanmaz!)  |  Non-oksidatif faz (net): 3 Ribuloz-5-P ⇌ 2 Fruktoz-6-P + 1 Gliseraldehit-3-P  |  4 metabolik mod: (1) NADPH ihtiyacı > R5P → non-oksidatif ürünler G6P\'ye geri döner; (2) R5P ihtiyacı > NADPH → oksidatif faz atlanır, F6P/G3P\'den R5P yapılır; (3) NADPH ve R5P eşit ihtiyaç → yalnız oksidatif faz; (4) NADPH + ATP ihtiyacı → ürünler glikolize girer',
         entryBridge: 'Glikolizin 1. basamağındaki Glukoz-6-Fosfat (G6P) kavşağından ayrılır.',
-        exitBridge: 'Non-oksidatif fazda Transketolaz ve Transaldolaz enzimleriyle Fruktoz-6-Fosfat (F6P) ve Gliseraldehit-3-Fosfat (G3P) oluşturarak Glikolize kesintisiz geri bağlanır!',
+        exitBridge: 'Non-oksidatif fazda Transketolaz ve Transaldolaz enzimleriyle Fruktoz-6-Fosfat (F6P) ve Gliseraldehit-3-Fosfat (G3P) oluşturarak Glikolize kesintisiz geri bağlanır; R5P ise PRPP üzerinden nükleotid sentezine ayrılır!',
         steps: [
           {
-            stepNo: 'Oksidatif Faz (⚡ HIZ KISITLAYICI BASAMAK • Tersinmez NADPH Üretimi)',
-            substrate: 'Glukoz-6-Fosfat (G6P) + 2 NADP⁺',
-            product: '6-Fosfoglukonolakton → 6-Fosfoglukonat → Ribuloz-5-Fosfat (5C) + 2 NADPH + CO₂',
-            cofactors: 'G6PD + 6-Fosfoglukonolaktonaz + 6-Fosfoglukonat Dehidrogenaz (NADP⁺ bağımlı)',
+            stepNo: 'Oksidatif Faz — Basamak 1 (⚡ HIZ KISITLAYICI BASAMAK • Tersinmez • 1. NADPH)',
+            substrate: 'Glukoz-6-Fosfat (G6P) + NADP⁺',
+            product: '6-Fosfoglukono-δ-lakton + NADPH + H⁺',
+            cofactors: 'NADP⁺ → NADPH (G6PD, NADP⁺ bağımlı dehidrogenasyon)',
             enzyme: 'Glukoz-6-Fosfat Dehidrogenaz (G6PD) [Hız Kısıtlayıcı Enzim]',
             isRateLimiting: true,
             statePreference: 'fed',
@@ -417,16 +417,69 @@
               'Steroid İnhibitör: Dehidroepiandrosteron (DHEA — memeli G6PD\'sinin yarışmasız inhibitörü)'
             ],
             crossConnections: [
-              { targetPathway: 'lipogenez', label: '🔗 Üretilen 2 NADPH; Yağ Asidi Sentezi (FAS), Kolesterol Sentezi (HMG-KoA Redüktaz), Steroid Sentezi (CYP450), Nitrik Oksit Sentezi (NOS) ve Eritrosit Glutatyon İndirgenmesini besler!' }
+              { targetPathway: 'lipogenez', label: '🔗 Üretilen NADPH; Yağ Asidi Sentezi (FAS), Kolesterol Sentezi (HMG-KoA Redüktaz), Steroid Sentezi (CYP450), Nitrik Oksit Sentezi (NOS) ve Eritrosit Glutatyon İndirgenmesini besler!' }
             ],
             clinicalNote: 'PATOFİZYOLOJİ — G6PD Eksikliği ve Eritrosit Oksidatif Yıkım Mekanizması: Eritrositlerde NADPH üretiminin TEK kaynağı Pentoz Fosfat Yoludur. Üretilen NADPH, Glutatyon Redüktaz (FAD bağımlı) aracılığıyla okside glutatyonu (GSSG) indirgenmiş glutatyona (2 GSH) çevirir; GSH ise Selenyum bağımlı Glutatyon Peroksidaz ile hidrojen peroksidi (H₂O₂) suya detoksifiye eder. X\'e bağlı G6PD eksikliğinde enfeksiyonlar (nötrofilik serbest radikaller), bakla (divisin/izouramil), antimalaryaller (Primakin), Sülfonamidler, Dapson veya Nitrofurantoin alındığında H₂O₂ birikir. Biriken H₂O₂ hemoglobinin globin zincirlerindeki -SH gruplarını okside ederek çözünmez denatüre hemoglobin çökeltileri olan "Heinz Cisimcikleri"ni (metilen mavisi/kristal viyole ile boyanır) oluşturur. Dalak makrofajları bu çökeltileri eritrosit membranından ısırarak koparır ("Bite Cells / Isırılmış Hücreler") ve ağır akut hemolitik anemi, hemoglobinüri ve sarılık gelişir.'
           },
           {
-            stepNo: 'Non-Oksidatif Faz (Tersinir Karbon Yeniden Düzenleme • Glikolize Geri Bağlantı)',
-            substrate: 'Ribuloz-5-Fosfat (5C) ↔ Riboz-5-Fosfat (R5P, 5C) + Ksiluloz-5-Fosfat (Xu5P, 5C)',
-            product: '2 × Fruktoz-6-Fosfat (6C) + 1 × Gliseraldehit-3-Fosfat (3C)  [veya R5P → PRPP → Nükleotidler]',
-            cofactors: 'Transketolaz [Zorunlu Koenzim: Tiyamin Pirofosfat (TPP / B1 Vitamini) — 2C aktarır] + Transaldolaz [Koenzim İSTEMEZ, Schiff bazı kurar — 3C aktarır]',
-            enzyme: 'Epimeraz / İzomeraz  →  Transketolaz (B1-TPP)  &  Transaldolaz',
+            stepNo: 'Oksidatif Faz — Basamak 2 (Tersinmez Hidroliz)',
+            substrate: '6-Fosfoglukono-δ-lakton + H₂O',
+            product: '6-Fosfoglukonat',
+            cofactors: 'H₂O (hidroliz; ATP/NADP⁺ gerekmez)',
+            enzyme: '6-Fosfoglukonolaktonaz',
+            isRateLimiting: false,
+            statePreference: 'fed',
+            activators: [
+              'Substrat: 6-Fosfoglukono-δ-lakton (lakton halka hidrolizi enzimle belirgin hızlanır; spontan hidroliz de yavaş gerçekleşebilir)'
+            ],
+            inhibitors: [
+              'Not: Belirgin allosterik düzenleme yoktur; hız kısıtlayıcı değildir. Lakton hidrolizinin gecikmesi, reaktif lakton birikimine ve yan tepkimelere yol açabilir'
+            ],
+            crossConnections: []
+          },
+          {
+            stepNo: 'Oksidatif Faz — Basamak 3 (Tersinmez Oksidatif Dekarboksilasyon • 2. NADPH)',
+            substrate: '6-Fosfoglukonat + NADP⁺',
+            product: 'Ribuloz-5-Fosfat (5C) + CO₂ + NADPH + H⁺',
+            cofactors: 'NADP⁺ → NADPH (oksidatif dekarboksilasyon)',
+            enzyme: '6-Fosfoglukonat Dehidrogenaz',
+            isRateLimiting: false,
+            statePreference: 'fed',
+            activators: [
+              'Substrat/Koenzim: 6-Fosfoglukonat ve NADP⁺ (yüksek NADP⁺ / NADPH oranı akımı artırır)'
+            ],
+            inhibitors: [
+              'Ürün İnhibisyonu: NADPH (NADP⁺ ile yarışarak enzimi baskılar)',
+              'Not: Oksidatif fazın hız kısıtlayıcı basamağı G6PD\'dir; bu basamak CO₂ çıkışı ve 2. NADPH ile fazı tamamlar'
+            ],
+            crossConnections: []
+          },
+          {
+            stepNo: 'Non-Oksidatif Faz — Basamak 1 (Tersinir İzomerizasyon / Epimerizasyon)',
+            substrate: 'Ribuloz-5-Fosfat (Ru5P, 5C)',
+            product: 'Riboz-5-Fosfat (R5P, aldoz) + Ksiluloz-5-Fosfat (Xu5P, ketoz)  [R5P → PRPP (PRPP Sentetaz) → Nükleotidler]',
+            cofactors: 'Ru5P ↔ R5P: ketoz → aldoz izomerizasyonu  |  Ru5P ↔ Xu5P: C3 epimerizasyonu',
+            enzyme: 'Ribuloz-5-Fosfat İzomeraz (Ru5P ↔ R5P)  &  Ribuloz-5-Fosfat 3-Epimeraz (Ru5P ↔ Xu5P)',
+            isRateLimiting: false,
+            statePreference: 'both',
+            activators: [
+              'Substrat dengesi: Hücrenin R5P (bölünen hücreler) veya Xu5P/NADPH-ATP (yağ dokusu/eritrosit) ihtiyacına göre iki yönde de çalışır'
+            ],
+            inhibitors: [
+              'Not: Belirgin allosterik düzenleme yoktur; reaksiyonlar tersinirdir'
+            ],
+            crossConnections: [
+              { targetPathway: 'lipogenez', label: '🔗 Xu5P (karaciğerde tokluk sinyali): PP2A\'yı aktive ederek ChREBP\'i defosforile eder → glikolitik ve lipojenik gen ekspresyonu artar (Harper / Lehninger)' },
+              { targetPathway: 'glikoliz', label: '🔗 Xu5P → PP2A → PFK-2/FBPaz-2 defosforilasyonu → Fruktoz-2,6-Bisfosfat artışı → PFK-1 aktivasyonu (karaciğerde glikoliz uyarımı)' }
+            ],
+            clinicalNote: 'PATOFİZYOLOJİ — Riboz-5-Fosfat İzomeraz (RPIA) Eksikliği: Çok nadir görülen otozomal resesif bir hastalıktır; lökoensefalopati ve gelişimsel bozuklukla seyreder, idrarda poliol (ribitol ve arabitol) atılımı artar.'
+          },
+          {
+            stepNo: 'Non-Oksidatif Faz — Basamak 2 (Tersinir • 2C Aktarımı)',
+            substrate: 'Ksiluloz-5-P + Riboz-5-P  |  Ksiluloz-5-P + Eritroz-4-P',
+            product: 'Gliseraldehit-3-P (G3P) + Sedoheptuloz-7-P  |  Fruktoz-6-P (F6P) + G3P',
+            cofactors: 'Tiyamin Pirofosfat (TPP / B1 Vitamini) + Mg²⁺ (2C glikoaldehit birimi aktarılır)',
+            enzyme: 'Transketolaz (B1-TPP)',
             isRateLimiting: false,
             statePreference: 'both',
             activators: [
@@ -437,10 +490,28 @@
               'Klinik Eksiklik: Tiyamin (B1) Eksikliği (Wernicke-Korsakoff sendromu ve Beriberi\'de eritrosit Transketolaz aktivitesi düşer; tanı için eritrosit transketolaz aktivasyon testi kullanılır)',
               'Oksitiyamin (TPP antimetaboliti / yarışmalı inhibitör)'
             ],
+            crossConnections: [],
+            clinicalNote: 'PATOFİZYOLOJİ — Wernicke-Korsakoff Sendromu (Tiyamin / B1 Eksikliği) ve PRPP Aşırı Üretimi: Kronik alkolizm veya malnütrisyonda Tiyamin Pirofosfat (TPP) eksikliği; Transketolaz, PDH ve α-KGDH enzimlerini aynı anda felç eder. Bu hastaya tiyamin vermeden önce damardan Glukoz (dekstroz) infüzyonu yapılırsa, hızlanan glikoliz tüm kalan TPP\'yi tüketerek mamiller cisimciklerde ve talamusta akut ATP çöküşüne ve hemorajik nekroza yol açar: Konfüzyon + Oftalmopleji/Nistagmus + Ataksi (Wernicke ensefalopatisi) ve geri dönüşümsüz amnezi/konfabülasyon (Korsakoff psikozu) gelişir! Öte yandan Riboz-5-P\'den PRPP üreten PRPP Sentetaz\'ın X\'e bağlı aşırı aktivite (gain-of-function) mutasyonlarında, aşırı pürin sentezi ve yıkımı sonucu erken yaşta ağır Hiperürisemi, Gut artriti, ürik asit nefrolitiyazisi ve nörogelişimsel bozukluk ortaya çıkar.'
+          },
+          {
+            stepNo: 'Non-Oksidatif Faz — Basamak 3 (Tersinir • 3C Aktarımı • Glikolize Geri Bağlantı)',
+            junctionId: 'j-f6p',
+            substrate: 'Sedoheptuloz-7-P (7C) + Gliseraldehit-3-P (G3P)',
+            product: 'Eritroz-4-P (4C) + Fruktoz-6-P (F6P)',
+            cofactors: 'Koenzim İSTEMEZ (3C dihidroksiaseton birimi aktarılır; aktif bölgedeki Lizin ile Schiff bazı kurar)',
+            enzyme: 'Transaldolaz',
+            isRateLimiting: false,
+            statePreference: 'both',
+            activators: [
+              'Substrat yönlendirmesi: Sedoheptuloz-7-P ve G3P artışı F6P + Eritroz-4-P oluşumunu, F6P artışı ters yönü sürer'
+            ],
+            inhibitors: [
+              'Not: Belirgin allosterik düzenleme yoktur; akım substrat dengesine göre tersinir ilerler'
+            ],
             crossConnections: [
               { targetPathway: 'glikoliz', label: '🔗 KESİNTİSİZ GERİ BAĞLANTI: Oluşan Fruktoz-6-Fosfat (Basamak 2-3 arasına) ve Gliseraldehit-3-Fosfat (Basamak 5-6 arasına) doğrudan Glikoliz omurgasına geri bağlanır!' }
             ],
-            clinicalNote: 'PATOFİZYOLOJİ — Wernicke-Korsakoff Sendromu (Tiyamin / B1 Eksikliği) ve PRPP Aşırı Üretimi: Kronik alkolizm veya malnütrisyonda Tiyamin Pirofosfat (TPP) eksikliği; Transketolaz, PDH ve α-KGDH enzimlerini aynı anda felç eder. Bu hastaya tiyamin vermeden önce damardan Glukoz (dekstroz) infüzyonu yapılırsa, hızlanan glikoliz tüm kalan TPP\'yi tüketerek mamiller cisimciklerde ve talamusta akut ATP çöküşüne ve hemorajik nekroza yol açar: Konfüzyon + Oftalmopleji/Nistagmus + Ataksi (Wernicke ensefalopatisi) ve geri dönüşümsüz amnezi/konfabülasyon (Korsakoff psikozu) gelişir! Öte yandan Riboz-5-P\'den PRPP üreten PRPP Sentetaz\'ın X\'e bağlı aşırı aktivite (gain-of-function) mutasyonlarında, aşırı pürin sentezi ve yıkımı sonucu erken yaşta ağır Hiperürisemi, Gut artriti, ürik asit nefrolitiyazisi ve nörogelişimsel bozukluk ortaya çıkar.'
+            clinicalNote: 'PATOFİZYOLOJİ — Transaldolaz (TALDO1) Eksikliği: Nadir otozomal resesif hastalıktır; yenidoğanda hepatosplenomegali, karaciğer fonksiyon bozukluğu/siroz ve kanama eğilimi görülür. İdrarda poliol ve şeker alkolleri (eritritol, ribitol, arabitol) ile sedoheptuloz atılımı artar.'
           }
         ]
       },
